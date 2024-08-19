@@ -35,6 +35,9 @@ class Stack {
 };
 
 int main() {
-
+    Stack s;
+    cout << "Stack created" << endl;
+    cout << "Is stack empty? " << (s.isEmpty() ? "Yes" : "No") << endl;
+    cout << "Is stack full? " << (s.isFull() ? "Yes" : "No") << endl;
     return 0;
 }
