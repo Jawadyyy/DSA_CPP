@@ -1,1 +1,1 @@
-Compilation of DSA Programs for Beginners
+Beginner Level Programs for People getting Into DSA
