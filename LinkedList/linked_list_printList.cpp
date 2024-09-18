@@ -1,46 +1,77 @@
 #include <iostream>
-
 using namespace std;
 
 class Node {
 public:
-    Node *next;
     int value;
+    Node *next;
+
+    Node(int value) {
+        this->value = value;
+        next = NULL;
+    }
 };
 
-void printList(Node *n) {
-    while (n != NULL) {
-        cout << n->value << endl;
-        n = n->next;
-    }
+void printList(Node *head) {
+    if (head == NULL) return;
+    Node *current = head;
+    
+    do {
+        cout << current->value << endl;
+        current = current->next;
+    } while (current != head);
+}
+
+void deleteList(Node* &head) {
+    if (head == NULL) return;
+
+    Node *current = head;
+    Node *nextNode = NULL;
+
+    do {
+        nextNode = current->next;
+        delete current;
+        current = nextNode;
+    } while (current != head);
+    
+    head = NULL;
 }
 
 int main() {
+    int n;
+    cout << "Enter the number of nodes: ";
+    cin >> n;
 
-    Node *head = new Node();
-    Node *second = new Node();
-    Node *third = new Node();
-    Node *fourth = new Node();
+    Node *head = NULL;
+    Node *tail = NULL;
 
-    head->value = 1;
-    head->next = second;
+    for (int i = 1; i <= n; i++) {
+        int val;
+        cout << "Enter value for node " << i << ": ";
+        cin >> val;
+        
+        Node *newNode = new Node(val);
 
-    second->value = 2;
-    second->next = third;
+        if (head == NULL) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail->next = newNode;
+            tail = newNode;
+        }
+    }
 
-    third->value = 3;
-    third->next = fourth;
+    if (tail != NULL) {
+        tail->next = head; 
+    }
 
-    fourth->value = 4;
-    fourth->next = NULL;
-
+    cout << "The cyclic linked list is: " << endl;
     printList(head);
-    
-    Node *current = head;
-    while (current != NULL) {
-        Node *next = current->next;
-        delete current;
-        current = next;
+
+    deleteList(head);
+
+    if (head == NULL) {
+        cout << "The cyclic linked list has been deleted." << endl;
     }
 
     return 0;
