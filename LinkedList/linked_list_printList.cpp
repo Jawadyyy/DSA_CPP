@@ -12,27 +12,32 @@ public:
     }
 };
 
+
 void printList(Node *head) {
-    if (head == NULL) return;
+    if (head == NULL) {
+        cout << "The list is empty." << endl;
+        return;
+    }
+
     Node *current = head;
-    
-    do {
-        cout << current->value << endl;
+    while (current != NULL) {
+        cout << current->value << " -> ";
         current = current->next;
-    } while (current != head);
+    }
+    cout << "NULL" << endl;
 }
 
 void deleteList(Node* &head) {
     if (head == NULL) return;
 
     Node *current = head;
-    Node *nextNode = NULL;
+    Node *nextNode;
 
-    do {
-        nextNode = current->next;
-        delete current;
-        current = nextNode;
-    } while (current != head);
+    while (current != NULL) {
+        nextNode = current->next; 
+        delete current; 
+        current = nextNode;     
+    }
     
     head = NULL;
 }
@@ -61,17 +66,13 @@ int main() {
         }
     }
 
-    if (tail != NULL) {
-        tail->next = head; 
-    }
-
-    cout << "The cyclic linked list is: " << endl;
+    cout << "Linked list: ";
     printList(head);
 
     deleteList(head);
 
     if (head == NULL) {
-        cout << "The cyclic linked list has been deleted." << endl;
+        cout << "The linked list has been deleted." << endl;
     }
 
     return 0;
