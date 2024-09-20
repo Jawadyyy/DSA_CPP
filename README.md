@@ -1,1 +1,1 @@
-Beginner Level Programs for People getting Into DSA
+Beginner Level Programs for people getting into DSA.
