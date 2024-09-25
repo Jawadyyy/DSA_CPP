@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void displayArray(int ray[], int size)
+void display(int ray[], int size)
 {
     for (int i = 0; i < size; i++)
     {
@@ -16,7 +16,7 @@ int main()
     int arr[5] = {29, 32, 44, 88, 78};
     int size = 5;
 
-    displayArray(arr, size);
+    display(arr, size);
 
     return 0;
 }
